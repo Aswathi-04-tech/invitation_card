@@ -1,0 +1,51 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Playfair Display", serif;
+  --font-sans: "Poppins", sans-serif;
+  
+  --color-ivory: #FFFFF0;
+  --color-blush: #FFE4E1;
+  --color-champagne: #F7E7CE;
+  --color-gold: #D4AF37;
+  --color-dark: #2C2C2C;
+}
+
+@layer base {
+  body {
+    @apply font-sans bg-ivory text-dark m-0 p-0 overflow-hidden select-none;
+    touch-action: pan-y pinch-zoom;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif;
+  }
+}
+
+@layer utilities {
+  .glass-card {
+    @apply bg-white/30 backdrop-blur-md border border-white/40 shadow-xl rounded-2xl;
+  }
+  .glass-button {
+    @apply bg-white/50 backdrop-blur-sm border border-white/50 shadow-md rounded-full text-dark font-medium transition-all duration-300 hover:bg-white/70 hover:shadow-lg hover:-translate-y-1;
+  }
+  .text-gold-gradient {
+    @apply bg-gradient-to-r from-[#D4AF37] to-[#B8860B] text-transparent bg-clip-text;
+  }
+  
+  /* Perspective and 3D utilities for the envelope */
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+  .transform-style-3d {
+    transform-style: preserve-3d;
+  }
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+  
+  /* Ribbon and wax seal */
+  .wax-seal {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06), inset 0 2px 4px rgba(255, 255, 255, 0.3), inset 0 -2px 4px rgba(0, 0, 0, 0.3);
+  }
+}
