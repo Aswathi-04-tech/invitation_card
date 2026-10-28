@@ -616,18 +616,18 @@ const dressCodes = [
       accent: '#D4AF37',
     },
     lines: [
-      { label: 'Ladies', value: 'Kasavu Saree', icon: '🥻' },
+      { label: 'Ladies', value: 'Pattusari Saree', icon: '🥻' },
       { label: 'Gents & Boys', value: 'Mund & Shirt', icon: '👔' },
     ],
     swatches: [
-      { name: 'Kasavu Cream', color: '#F5EBD0' },
-      { name: 'Antique Gold', color: '#D4AF37' },
-      { name: 'Off White', color: '#FBF7EE' },
+      // { name: 'Kasavu Cream', color: '#F5EBD0' },
+      // { name: 'Antique Gold', color: '#D4AF37' },
+      // { name: 'Off White', color: '#FBF7EE' },
     ],
-    avoid: [
-      { name: 'Red', color: '#C62828' },
-      { name: 'Maroon', color: '#800000' },
-    ],
+    // avoid: [
+    //   // { name: 'Red', color: '#C62828' },
+    //   // { name: 'Maroon', color: '#800000' },
+    // ],
   },
   {
     key: 'bolly',
@@ -642,12 +642,12 @@ const dressCodes = [
       accent: '#E5C158',
     },
     lines: [
-      { label: 'Theme', value: 'Wine & Burgundy', icon: '✨' },
-      { label: 'Attire', value: 'Wine & Burgundy Only', icon: '💃' },
+      { label: 'Theme', value: 'Bollywood glam', icon: '✨' },
+      { label: 'Attire', value: 'Wine /Burgundy Only', icon: '💃' },
     ],
     swatches: [
-      { name: 'Wine', color: '#722F37' },
-      { name: 'Burgundy', color: '#800020' },
+      // { name: 'Wine', color: '#722F37' },
+      { name: 'Burgundy/Wine', color: '#800020' },
     ],
   },
   {
@@ -959,79 +959,84 @@ function DressCodeSection({ scrollRootRef }) {
                   </div>
 
                   {/* Colour palette */}
-                  <div className="mt-14">
-                    <div className="flex items-center gap-4 mb-8">
-                      <div
-                        className="flex-1 h-px"
-                        style={{ background: `${t.accent}40` }}
-                      />
+                  {/* Colour Palette - Show only when colours are provided */}
+{d.swatches && d.swatches.length > 0 && (
+  <div className="mt-14">
+    <div className="flex items-center gap-4 mb-8">
+      <div
+        className="flex-1 h-px"
+        style={{ background: `${t.accent}40` }}
+      />
 
-                      <p
-                        className="uppercase tracking-[0.35em] text-[9px] font-semibold whitespace-nowrap"
-                        style={{ color: t.sub }}
-                      >
-                        Colour Palette
-                      </p>
+      <p
+        className="uppercase tracking-[0.35em] text-[9px] font-semibold whitespace-nowrap"
+        style={{ color: t.sub }}
+      >
+        Colour Palette
+      </p>
 
-                      <div
-                        className="flex-1 h-px"
-                        style={{ background: `${t.accent}40` }}
-                      />
-                    </div>
+      <div
+        className="flex-1 h-px"
+        style={{ background: `${t.accent}40` }}
+      />
+    </div>
 
-                    <div className="flex flex-wrap justify-center gap-7">
-                      {d.swatches.map((swatch, i) => (
-                        <motion.div
-                          key={swatch.name}
-                          initial={{ opacity: 0, y: 30 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{
-                            delay: 0.3 + i * 0.08,
-                            duration: 0.5,
-                          }}
-                          whileHover={{ y: -7 }}
-                          className="text-center"
-                        >
-                          <div
-                            className="relative w-16 h-16 rounded-full mx-auto mb-3"
-                            style={{
-                              backgroundColor: swatch.color,
-                              boxShadow: `
-                                0 8px 25px ${swatch.color}66,
-                                inset 0 0 0 1px rgba(255,255,255,0.6)
-                              `,
-                            }}
-                          >
-                            <div className="absolute inset-1 rounded-full border border-white/40" />
-                            <div className="absolute inset-0 rounded-full bg-gradient-to-br from-white/30 via-transparent to-black/10" />
-                          </div>
+    {/* Colour circles */}
+    <div className="flex flex-wrap justify-center gap-7">
+      {d.swatches.map((swatch, i) => (
+        <motion.div
+          key={swatch.name}
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{
+            delay: 0.3 + i * 0.08,
+            duration: 0.5,
+          }}
+          whileHover={{ y: -7 }}
+          className="text-center"
+        >
+          <div
+            className="relative w-16 h-16 rounded-full mx-auto mb-3"
+            style={{
+              backgroundColor: swatch.color,
+              boxShadow: `
+                0 8px 25px ${swatch.color}66,
+                inset 0 0 0 1px rgba(255,255,255,0.6)
+              `,
+            }}
+          >
+            <div className="absolute inset-1 rounded-full border border-white/40" />
 
-                          <p
-                            className="text-[9px] font-medium whitespace-nowrap"
-                            style={{ color: t.sub }}
-                          >
-                            {swatch.name}
-                          </p>
-                        </motion.div>
-                      ))}
-                    </div>
+            <div className="absolute inset-0 rounded-full bg-gradient-to-br from-white/30 via-transparent to-black/10" />
+          </div>
 
-                    {/* Palette ribbon */}
-                    <motion.div
-                      initial={{ scaleX: 0 }}
-                      animate={{ scaleX: 1 }}
-                      transition={{ delay: 0.6, duration: 1 }}
-                      className="flex h-1.5 max-w-md mx-auto mt-10 rounded-full overflow-hidden"
-                    >
-                      {d.swatches.map((swatch) => (
-                        <span
-                          key={swatch.name}
-                          className="flex-1"
-                          style={{ backgroundColor: swatch.color }}
-                        />
-                      ))}
-                    </motion.div>
-                  </div>
+          <p
+            className="text-[9px] font-medium whitespace-nowrap"
+            style={{ color: t.sub }}
+          >
+            {swatch.name}
+          </p>
+        </motion.div>
+      ))}
+    </div>
+
+    {/* Palette ribbon */}
+    <motion.div
+      initial={{ scaleX: 0 }}
+      animate={{ scaleX: 1 }}
+      transition={{ delay: 0.6, duration: 1 }}
+      className="flex h-1.5 max-w-md mx-auto mt-10 rounded-full overflow-hidden"
+    >
+      {d.swatches.map((swatch) => (
+        <span
+          key={swatch.name}
+          className="flex-1"
+          style={{ backgroundColor: swatch.color }}
+        />
+      ))}
+    </motion.div>
+  </div>
+)}
 
                   {/* Avoid colours */}
                   {d.avoid && (
@@ -1696,7 +1701,8 @@ export default function ScrollInvitation({ onRestart }) {
         {/* ══════════ SECTION 4.75 – DRESS CODE ══════════ */}
         <DressCodeSection scrollRootRef={scrollRootRef} />
 
-        <section className="relative min-h-[80vh] flex items-center justify-center py-24 px-4 overflow-hidden bg-[#faf9f6]/90">
+        {/* ══════════ SECTION 5 – VENUE DETAILS & MAP ══════════ */}
+        <section ref={functionSectionRef} className="relative min-h-[80vh] flex items-center justify-center py-24 px-4 overflow-hidden bg-[#faf9f6]/90">
           <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent z-0" />
 
           <div className="relative z-10 w-full max-w-md mx-auto text-center">
@@ -1727,7 +1733,7 @@ export default function ScrollInvitation({ onRestart }) {
                   Venue Details
                 </p>
                 <p className="font-sans text-sm text-[#5c4a3d] tracking-wide mb-6">
-                  Kuttiady, Kerala
+                  Cherandathur, Kerala
                 </p>
                 <p className="font-sans text-xs text-[#8B7355]/80 italic leading-relaxed mb-6 px-2">
                   Join us at our beautiful venue as we step into our forever. We look forward to welcoming you to this special celebration.
